@@ -50,6 +50,8 @@ public class VehiclesController {
 			return new ResponseEntity<Object> (null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	
 
 	@RequestMapping(value="/vehicles/{id}", method=RequestMethod.DELETE)
 	public @ResponseBody Object deleteVehicleWithId(@PathVariable @NotNull @DecimalMin("0") long id) {
@@ -99,6 +101,21 @@ public class VehiclesController {
 	public @ResponseBody Object postVehicle(@RequestBody Vehicle vehicle) {
 		try {
 			if(vehiclesJdbcRepository.insertVehicle(vehicle)) {
+				return new ResponseEntity<Object> (HttpStatus.OK);
+			} else {
+				return new ResponseEntity<Object> (HttpStatus.BAD_REQUEST);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Object> (null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@RequestMapping(value="/vehicles/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Object postVehicle(@PathVariable @NotNull @DecimalMin("0") long id, @RequestBody Vehicle vehicle) {
+		try {
+			vehicle.setVehicle_id(id);
+			if(vehiclesJdbcRepository.updateVehicle(vehicle)) {
 				return new ResponseEntity<Object> (HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Object> (HttpStatus.BAD_REQUEST);

@@ -25,7 +25,7 @@ public class VehiclesJdbcRepository implements VehiclesDAO{
 			vehicle.setVehicle_id(rs.getLong("vehicle_id"));
 			vehicle.setBrand(rs.getString("brand"));
 			vehicle.setModel(rs.getString("model"));
-			vehicle.setSpeed(rs.getString("speed"));
+			vehicle.setSpeed(rs.getInt("speed"));
 			vehicle.setType(rs.getString("type"));
 			vehicle.setYear(rs.getInt("year"));
 			vehicle.setDescription(rs.getString("description"));

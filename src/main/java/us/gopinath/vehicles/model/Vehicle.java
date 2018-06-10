@@ -5,7 +5,7 @@ public class Vehicle {
 	String brand;
 	String model;
 	int year; 
-	String speed; 
+	int speed; 
 	String type; 
 	String description;
 	
@@ -13,7 +13,7 @@ public class Vehicle {
 		super();
 	}
 
-	public Vehicle(String brand, String model, int year, String speed, String type,
+	public Vehicle(String brand, String model, int year, int speed, String type,
 			String description) {
 		super();
 		this.brand = brand;
@@ -24,7 +24,7 @@ public class Vehicle {
 		this.description = description;
 	}
 	
-	public Vehicle(long vehicle_id, String brand, String model, int year, String speed, String type,
+	public Vehicle(long vehicle_id, String brand, String model, int year, int speed, String type,
 			String description) {
 		super();
 		this.vehicle_id = vehicle_id;
@@ -62,10 +62,10 @@ public class Vehicle {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	public String getSpeed() {
+	public int getSpeed() {
 		return speed;
 	}
-	public void setSpeed(String speed) {
+	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
 	public String getType() {
